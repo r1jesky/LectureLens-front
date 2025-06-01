@@ -1,0 +1,288 @@
+<div class="container">
+  <nav>
+    <button (click)="select(1)" [class.active]="section === 1">Занятие</button>
+    <button (click)="select(2)" [class.active]="section === 2">Курс</button>
+    <button (click)="select(3)" [class.active]="section === 3">Экзамен</button>
+  </nav>
+
+  <form (ngSubmit)="submit()">
+    @if (section === 1) {
+      <div class="section">
+        <h2>Оценка занятия</h2>
+        <label>0. Оцените качество преподавания курса</label>
+        <div class="bubble-row">
+          <span class="bubble-label-left">Плохо</span>
+          <div class="bubble-group" [ngClass]="{'scale-10': true}">
+            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+              <label>
+                <input type="radio" [name]="'s1_q0'" [(ngModel)]="responses.section1.q0" [value]="i" />
+                <span class="bubble" [ngClass]="{
+                  'left': i <= 5,
+                  'right': i > 5
+                }"></span>
+              </label>
+            }
+          </div>
+          <span class="bubble-label-right">Хорошо</span>
+        </div>
+
+        <label>0.1. Хотели бы вы рассказать о проведенном занятии чуть больше?</label>
+        <input type="checkbox" [(ngModel)]="responses.section1.q01" [name]="'s1_q01'" (change)="onCheckboxChange('section1')" />
+        @if (responses.section1.q01) {
+          <label>1. Как вы оцениваете свои знания по прохождению курса?</label>
+          <div class="bubble-row">
+            <span class="bubble-label-left">Плохо</span>
+            <div class="bubble-group" [ngClass]="{'scale-5': true}">
+              @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s1_q1'" [(ngModel)]="responses.section1.q1" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i < 3,
+                    'right': i > 2
+                  }"></span>
+                </label>
+              }
+            </div>
+            <span class="bubble-label-right">Хорошо</span>
+          </div>
+          <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section1.q1c" [name]="'s1_q1c'"></textarea>
+
+          <label>2. Содержал ли изученный материал научную составляющую?</label>
+          <div class="bubble-row">
+            <div class="bubble-group" [ngClass]="{'scale-2': true}">
+              @for (i of [1, 2]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s1_q2'" [(ngModel)]="responses.section1.q2" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i === 1,
+                    'right': i === 2
+                  }"></span>
+                </label>
+              }
+            </div>
+          </div>
+
+          <label>3. Можете ли вы самостоятельно осваивать новый материал?</label>
+          <div class="bubble-row">
+            <span class="bubble-label-left">Плохо</span>
+            <div class="bubble-group" [ngClass]="{'scale-5': true}">
+              @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s1_q3'" [(ngModel)]="responses.section1.q3" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i < 3,
+                    'right': i > 2
+                  }"></span>
+                </label>
+              }
+            </div>
+            <span class="bubble-label-right">Хорошо</span>
+          </div>
+          <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section1.q3c" [name]="'s1_q3c'"></textarea>
+
+          <label>4. Получаете ли вы от преподавателя доступные ответы на вопросы?</label>
+          <div class="bubble-row">
+            <span class="bubble-label-left">Плохо</span>
+            <div class="bubble-group" [ngClass]="{'scale-3': true}">
+              @for (i of [1, 2, 3]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s1_q4'" [(ngModel)]="responses.section1.q4" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i === 1,
+                    'right': i > 1
+                  }"></span>
+                </label>
+              }
+            </div>
+            <span class="bubble-label-right">Хорошо</span>
+          </div>
+          <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section1.q4c" [name]="'s1_q4c'"></textarea>
+
+          <label>5. Считаете ли вы, что объем самостоятельной работы оптимален?</label>
+          <div class="bubble-row">
+            <span class="bubble-label-left">Плохо</span>
+            <div class="bubble-group" [ngClass]="{'scale-5': true}">
+              @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s1_q5'" [(ngModel)]="responses.section1.q5" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i < 3,
+                    'right': i > 2
+                  }"></span>
+                </label>
+              }
+            </div>
+            <span class="bubble-label-right">Хорошо</span>
+          </div>
+          <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section1.q5c" [name]="'s1_q5c'"></textarea>
+        }
+      </div>
+    }
+
+    @if (section === 2) {
+      <div class="section">
+        <h2>Оценка курса</h2>
+        <label>0. Оцените качество преподавания курса</label>
+        <div class="bubble-row">
+          <span class="bubble-label-left">Плохо</span>
+          <div class="bubble-group" [ngClass]="{'scale-10': true}">
+            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+              <label>
+                <input type="radio" [name]="'s2_q0'" [(ngModel)]="responses.section2.q0" [value]="i" />
+                <span class="bubble" [ngClass]="{
+                  'left': i <= 5,
+                  'right': i > 5
+                }"></span>
+              </label>
+            }
+          </div>
+          <span class="bubble-label-right">Хорошо</span>
+        </div>
+
+        <label>0.1. Хотели бы вы рассказать о прошедших занятиях чуть больше?</label>
+        <input type="checkbox" [(ngModel)]="responses.section2.q01" [name]="'s2_q01'" (change)="onCheckboxChange('section2')" />
+        @if (responses.section2.q01) {
+          <label>1. Как вы оцениваете свои знания по прохождению курса?</label>
+          <div class="bubble-row">
+            <span class="bubble-label-left">Плохо</span>
+            <div class="bubble-group" [ngClass]="{'scale-5': true}">
+              @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s2_q1'" [(ngModel)]="responses.section2.q1" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i < 3,
+                    'right': i > 2
+                  }"></span>
+                </label>
+              }
+            </div>
+            <span class="bubble-label-right">Хорошо</span>
+          </div>
+          <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section2.q1c" [name]="'s2_q1c'"></textarea>
+
+          <label>2. Содержал ли изученный материал научную составляющую?</label>
+          <div class="bubble-row">
+            <div class="bubble-group" [ngClass]="{'scale-2': true}">
+              @for (i of [1, 2]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s2_q2'" [(ngModel)]="responses.section2.q2" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i === 1,
+                    'right': i === 2
+                  }"></span>
+                </label>
+              }
+            </div>
+          </div>
+
+          <label>3. Можете ли вы самостоятельно осваивать новый материал?</label>
+          <div class="bubble-row">
+            <span class="bubble-label-left">Плохо</span>
+            <div class="bubble-group" [ngClass]="{'scale-5': true}">
+              @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s2_q3'" [(ngModel)]="responses.section2.q3" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i < 3,
+                    'right': i > 2
+                  }"></span>
+                </label>
+              }
+            </div>
+            <span class="bubble-label-right">Хорошо</span>
+          </div>
+          <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section2.q3c" [name]="'s2_q3c'"></textarea>
+
+          <label>4. Получаете ли вы от преподавателя доступные ответы на вопросы?</label>
+          <div class="bubble-row">
+            <span class="bubble-label-left">Плохо</span>
+            <div class="bubble-group" [ngClass]="{'scale-3': true}">
+              @for (i of [1, 2, 3]; track trackByIndex($index)) {
+                <label>
+                  <input type="radio" [name]="'s2_q4'" [(ngModel)]="responses.section2.q4" [value]="i" />
+                  <span class="bubble" [ngClass]="{
+                    'left': i === 1,
+                    'right': i > 1
+                  }"></span>
+                </label>
+              }
+            </div>
+            <span class="bubble-label-right">Хорошо</span>
+          </div>
+          <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section2.q4c" [name]="'s2_q4c'"></textarea>
+        }
+      </div>
+    }
+
+    @if (section === 3) {
+      <div class="section">
+        <h2>Экзамен/Зачет</h2>
+        <label>0. Как у вас прошел экзамен/зачет?</label>
+        <div class="bubble-row">
+          <span class="bubble-label-left">Плохо</span>
+          <div class="bubble-group" [ngClass]="{'scale-10': true}">
+            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+              <label>
+                <input type="radio" [name]="'s3_q0'" [(ngModel)]="responses.section3.q0" [value]="i" />
+                <span class="bubble" [ngClass]="{
+                  'left': i <= 5,
+                  'right': i > 5
+                }"></span>
+              </label>
+            }
+          </div>
+          <span class="bubble-label-right">Хорошо</span>
+        </div>
+        <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section3.q0c" [name]="'s3_q0c'"></textarea>
+
+        <label>1. Как вы оцениваете свое эмоциональное состояние во время экзамена/зачета?</label>
+        <div class="bubble-row">
+          <span class="bubble-label-left">Плохо</span>
+          <div class="bubble-group" [ngClass]="{'scale-10': true}">
+            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+              <label>
+                <input type="radio" [name]="'s3_q1'" [(ngModel)]="responses.section3.q1" [value]="i" />
+                <span class="bubble" [ngClass]="{
+                  'left': i <= 5,
+                  'right': i > 5
+                }"></span>
+              </label>
+            }
+          </div>
+          <span class="bubble-label-right">Хорошо</span>
+        </div>
+        <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section3.q1c" [name]="'s3_q1c'"></textarea>
+
+        <label>2. Соответствовали ли вопросы в билетах полученному на занятиях материалу?</label>
+        <select [(ngModel)]="responses.section3.q3" [name]="'s3_q3'">
+          <option value="yes">Да</option>
+          <option value="partial">Были незнакомые вопросы</option>
+          <option value="no">Нет, вовсе не соответствовали</option>
+        </select>
+
+        <label>3. Был ли преподаватель к вам справедлив?</label>
+        <div class="bubble-row">
+          <span class="bubble-label-left">Плохо</span>
+          <div class="bubble-group" [ngClass]="{'scale-3': true}">
+            @for (i of [1, 2, 3]; track trackByIndex($index)) {
+              <label>
+                <input type="radio" [name]="'s3_q4'" [(ngModel)]="responses.section3.q4" [value]="i" />
+                <span class="bubble" [ngClass]="{
+                  'left': i === 1,
+                  'right': i > 1
+                }"></span>
+              </label>
+            }
+          </div>
+          <span class="bubble-label-right">Хорошо</span>
+        </div>
+        <textarea placeholder="Поясните ваш ответ" [(ngModel)]="responses.section3.q4c" [name]="'s3_q4c'"></textarea>
+
+        <label>4. Ваш комментарий (по желанию)</label>
+        <textarea placeholder="Напишите что-то" [(ngModel)]="responses.section3.q5" [name]="'s3_q5'"></textarea>
+      </div>
+    }
+
+    <button type="submit" class="submit-btn">Отправить</button>
+  </form>
+</div>
