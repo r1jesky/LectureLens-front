@@ -12,112 +12,45 @@ import { FormsModule } from '@angular/forms';
 export class BubbleRatingComponent {
   section = 1;
 
-  responses: {
+  responses = {
     section1: {
-      q0: number | null;
-      q01: boolean | null; // Изменил с 'yes' | 'no' на boolean для checkbox
-      q1: number | null;
-      q1c: string;
-      q2: number | null;
-      q3: number | null;
-      q3c: string;
-      q4: number | null;
-      q4c: string;
-      q5: number | null;
-      q5c: string;
-      q6: number | null;
-      q6c: string;
-      q7: number | null;
-      q7c: string;
-      q8: string;
-    };
-    section2: {
-      q0: number | null;
-      q01: boolean | null; // Изменил с 'yes' | 'no' на boolean для checkbox
-      q1: number | null;
-      q1c: string;
-      q2: number | null;
-      q3: number | null;
-      q3c: string;
-      q4: number | null;
-      q4c: string;
-      q5: number | null;
-      q5c: string;
-      q6: number | null;
-      q6c: string;
-      q7: number | null;
-      q8: number | null;
-      q8c: string;
-      q9: number | null;
-      q9c: string;
-      q10: string;
-      q11: number | null;
-    };
-    section3: {
-      q0: number | null; // Исправил на q0 вместо q1 для первой оценки
-      q0c: string;
-      q1: number | null;
-      q1c: string;
-      q2: number | null;
-      q2c: string;
-      q3: 'yes' | 'partial' | 'no' | null;
-      q4: number | null;
-      q4c: string;
-      q5: string;
-    };
-  } = {
-    section1: {
-      q0: null,
-      q01: false, // Инициализируем как false для checkbox
-      q1: null,
+      q0: null as number | null,
+      q01: null as 'yes' | 'no' | null,
+      q1: null as number | null,
       q1c: '',
-      q2: null,
-      q3: null,
+      q2: null as number | null,
+      q3: null as number | null,
       q3c: '',
-      q4: null,
+      q4: null as number | null,
       q4c: '',
-      q5: null,
-      q5c: '',
-      q6: null,
-      q6c: '',
-      q7: null,
-      q7c: '',
-      q8: ''
+      q5: null as number | null,
+      q5c: ''
     },
     section2: {
-      q0: null,
-      q01: false, // Инициализируем как false для checkbox
-      q1: null,
+      q0: null as number | null,
+      q01: null as 'yes' | 'no' | null,
+      q1: null as number | null,
       q1c: '',
-      q2: null,
-      q3: null,
+      q2: null as number | null,
+      q3: null as number | null,
       q3c: '',
-      q4: null,
+      q4: null as number | null,
       q4c: '',
-      q5: null,
-      q5c: '',
-      q6: null,
-      q6c: '',
-      q7: null,
-      q8: null,
-      q8c: '',
-      q9: null,
-      q9c: '',
-      q10: '',
-      q11: null
+      q5: null as number | null,
+      q5c: ''
     },
     section3: {
-      q0: null,
+      q0: null as number | null,
       q0c: '',
-      q1: null,
+      q1: null as number | null,
       q1c: '',
-      q2: null,
+      q2: null as number | null,
       q2c: '',
       q3: null as 'yes' | 'partial' | 'no' | null,
-      q4: null,
+      q4: null as number | null,
       q4c: '',
-      q5: '',
-    },
+      q5: ''
+    }
   };
 
   select(section: number) {
@@ -125,14 +58,13 @@ export class BubbleRatingComponent {
   }
 
   submit() {
-    console.log('Submitted responses:', this.responses);
-    alert('Ответы отправлены! (Смотри консоль)');
+    console.log('Submitted:', this.responses);
+    alert('Отправлено! Смотри консоль.');
   }
 
   trackByIndex = (index: number) => index;
 
   onCheckboxChange(section: string) {
-    // Можно добавить логику, если нужно, например, сброс значений при снятии галочки
     if (section === 'section1' && !this.responses.section1.q01) {
       this.responses.section1.q1 = null;
       this.responses.section1.q1c = '';
@@ -151,6 +83,8 @@ export class BubbleRatingComponent {
       this.responses.section2.q3c = '';
       this.responses.section2.q4 = null;
       this.responses.section2.q4c = '';
+      this.responses.section2.q5 = null;
+      this.responses.section2.q5c = '';
     }
   }
 }
