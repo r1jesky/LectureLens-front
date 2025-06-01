@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>Ваши достижения</h2>
+
+  <!-- Вкладки -->
+  <div class="tabs">
+    <button [ngClass]="{'active': currentSemester === 1}" (click)="switchSemester(1)">Семестр 1</button>
+    <button [ngClass]="{'active': currentSemester === 2}" (click)="switchSemester(2)">Семестр 2</button>
+  </div>
+
+  <!-- График -->
+  <div class="chart-section">
+    <canvas #progressChart></canvas>
+  </div>
+
+  <!-- Уровни достижений по месяцам (таблица) -->
+  <div class="monthly-section">
+    <h3>Уровни достижений по месяцам</h3>
+    <table class="monthly-table">
+      <tr>
+        <th></th>
+        <th *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">{{ month }}</th>
+      </tr>
+      <tr>
+        <td>75%</td>
+        <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
+          <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[0]}">★</span>
+        </td>
+      </tr>
+      <tr>
+        <td>90%</td>
+        <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
+          <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[1]}">★</span>
+        </td>
+      </tr>
+      <tr>
+        <td>100%</td>
+        <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
+          <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[2]}">★</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Прогресс-бар для сессии -->
+  <div class="exams-section">
+    <h3>Прогресс экзаменов и зачётов {{ currentSemester === 1 ? 'Сессии 1' : 'Сессии 2' }}</h3>
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width]="(currentSemester === 1 ? semester1ExamsPassed : semester2ExamsPassed) / (currentSemester === 1 ? semester1ExamsTotal : semester2ExamsTotal) * 100 + '%'"></div>
+    </div>
+    <p>{{ currentSemester === 1 ? semester1ExamsPassed : semester2ExamsPassed }} из {{ currentSemester === 1 ? semester1ExamsTotal : semester2ExamsTotal }} посещено ({{ (currentSemester === 1 ? semester1ExamsPassed / semester1ExamsTotal : semester2ExamsPassed / semester2ExamsTotal) * 100 | number:'1.0-0' }}%)</p>
+  </div>
+</div>
