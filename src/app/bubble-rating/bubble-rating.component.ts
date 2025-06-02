@@ -72,6 +72,10 @@ export class BubbleRatingComponent {
   }
 
   submit() {
+    if (!this.formValid()) {
+      alert('Пожалуйста, ответьте на все обязательные вопросы.');
+      return;
+    }
     console.log('Submitted:', this.responses);
     alert('Отправлено! Смотри консоль.');
   }
@@ -114,5 +118,48 @@ export class BubbleRatingComponent {
       this.responses.section2.q9c = '';
       this.responses.section2.q10c = '';
     }
+  }
+
+  formValid(): boolean {
+    const s = this.responses;
+
+    if (this.section === 1) {
+      return s.section1.q0 !== null &&
+        s.section1.q01 !== null &&
+        (s.section1.q01 === 'no' || (
+          s.section1.q1 !== null &&
+          s.section1.q2 !== null &&
+          s.section1.q3 !== null &&
+          s.section1.q4 !== null &&
+          s.section1.q5 !== null &&
+          s.section1.q6 !== null &&
+          s.section1.q7 !== null
+        ));
+    }
+
+    if (this.section === 2) {
+      return s.section2.q0 !== null &&
+        s.section2.q01 !== null &&
+        (s.section2.q01 === 'no' || (
+          s.section2.q1 !== null &&
+          s.section2.q2 !== null &&
+          s.section2.q3 !== null &&
+          s.section2.q4 !== null &&
+          s.section2.q5 !== null &&
+          s.section2.q6 !== null &&
+          s.section2.q7 !== null &&
+          s.section2.q8 !== null &&
+          s.section2.q9 !== null
+        ));
+    }
+
+    if (this.section === 3) {
+      return s.section3.q0 !== null &&
+        s.section3.q1 !== null &&
+        s.section3.q3 !== null &&
+        s.section3.q4 !== null;
+    }
+
+    return false;
   }
 }
