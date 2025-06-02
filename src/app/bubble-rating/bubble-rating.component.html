@@ -13,13 +13,13 @@
           <label>Оцените по шкале проведенное занятие</label>
           <div class="bubble-row">
             <span class="bubble-label-left">Плохо</span>
-            <div class="bubble-group" [ngClass]="{'scale-10': true}">
-              @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+            <div class="bubble-group" [ngClass]="{'scale-5': true}">
+              @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
                 <label>
                   <input type="radio" [name]="'s1_q0'" [(ngModel)]="responses.section1.q0" [value]="i" />
                   <span class="bubble" [ngClass]="{
-                    'left': i <= 5,
-                    'right': i > 5
+                    'left': i <= 2,
+                    'right': i > 2
                   }"></span>
                 </label>
               }
@@ -53,7 +53,7 @@
                   <label>
                     <input type="radio" [name]="'s1_q1'" [(ngModel)]="responses.section1.q1" [value]="i" />
                     <span class="bubble" [ngClass]="{
-                      'left': i < 3,
+                      'left': i <= 2,
                       'right': i > 2
                     }"></span>
                   </label>
@@ -92,7 +92,7 @@
                 <label>
                   <input type="radio" [name]="'s1_q3'" [(ngModel)]="responses.section1.q3" [value]="i" />
                   <span class="bubble" [ngClass]="{
-                    'left': i < 3,
+                    'left': i <= 2,
                     'right': i > 2
                   }"></span>
                 </label>
@@ -112,7 +112,7 @@
                 <label>
                   <input type="radio" [name]="'s1_q4'" [(ngModel)]="responses.section1.q4" [value]="i" />
                   <span class="bubble" [ngClass]="{
-                    'left': i < 3,
+                    'left': i <= 2,
                     'right': i > 2
                   }"></span>
                 </label>
@@ -200,13 +200,13 @@
         <label> Оцените качество преподавания курса в течение прошедшего времени</label>
         <div class="bubble-row">
           <span class="bubble-label-left">Плохо</span>
-          <div class="bubble-group" [ngClass]="{'scale-10': true}">
-            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+          <div class="bubble-group" [ngClass]="{'scale-5': true}">
+            @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
               <label>
                 <input type="radio" [name]="'s2_q0'" [(ngModel)]="responses.section2.q0" [value]="i" />
                 <span class="bubble" [ngClass]="{
-                  'left': i <= 5,
-                  'right': i > 5
+                  'left': i <= 2,
+                  'right': i > 2
                 }"></span>
               </label>
             }
@@ -241,7 +241,7 @@
                 <label>
                   <input type="radio" [name]="'s2_q1'" [(ngModel)]="responses.section2.q1" [value]="i" />
                   <span class="bubble" [ngClass]="{
-                    'left': i < 3,
+                    'left': i <= 2,
                     'right': i > 2
                   }"></span>
                 </label>
@@ -278,7 +278,7 @@
                 <label>
                   <input type="radio" [name]="'s2_q3'" [(ngModel)]="responses.section2.q3" [value]="i" />
                   <span class="bubble" [ngClass]="{
-                    'left': i < 3,
+                    'left': i <= 2,
                     'right': i > 2
                   }"></span>
                 </label>
@@ -318,7 +318,7 @@
                 <label>
                   <input type="radio" [name]="'s2_q5'" [(ngModel)]="responses.section2.q5" [value]="i" />
                   <span class="bubble" [ngClass]="{
-                    'left': i < 3,
+                    'left': i <= 2,
                     'right': i > 2
                   }"></span>
                 </label>
@@ -338,7 +338,7 @@
                 <label>
                   <input type="radio" [name]="'s2_q6'" [(ngModel)]="responses.section2.q6" [value]="i" />
                   <span class="bubble" [ngClass]="{
-                    'left': i < 3,
+                    'left': i <= 2,
                     'right': i > 2
                   }"></span>
                 </label>
@@ -423,13 +423,13 @@
         <label>Как у вас прошел экзамен/зачет?</label>
         <div class="bubble-row">
           <span class="bubble-label-left">Плохо</span>
-          <div class="bubble-group" [ngClass]="{'scale-10': true}">
-            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+          <div class="bubble-group" [ngClass]="{'scale-5': true}">
+            @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
               <label>
                 <input type="radio" [name]="'s3_q0'" [(ngModel)]="responses.section3.q0" [value]="i" />
                 <span class="bubble" [ngClass]="{
-                  'left': i <= 5,
-                  'right': i > 5
+                  'left': i <= 2,
+                  'right': i > 2
                 }"></span>
               </label>
             }
@@ -443,13 +443,13 @@
         <label> Как вы оцениваете свое эмоциональное состояние во время экзамена/зачета?</label>
         <div class="bubble-row">
           <span class="bubble-label-left">Плохо</span>
-          <div class="bubble-group" [ngClass]="{'scale-10': true}">
-            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track trackByIndex($index)) {
+          <div class="bubble-group" [ngClass]="{'scale-5': true}">
+            @for (i of [1, 2, 3, 4, 5]; track trackByIndex($index)) {
               <label>
                 <input type="radio" [name]="'s3_q1'" [(ngModel)]="responses.section3.q1" [value]="i" />
                 <span class="bubble" [ngClass]="{
-                  'left': i <= 5,
-                  'right': i > 5
+                  'left': i <= 2,
+                  'right': i > 2
                 }"></span>
               </label>
             }
