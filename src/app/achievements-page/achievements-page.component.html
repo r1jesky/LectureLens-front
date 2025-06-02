@@ -8,36 +8,42 @@
   </div>
 
   <!-- График -->
-  <div class="chart-section">
-    <canvas #progressChart></canvas>
+  <div class="chart-wrapper">
+    <div class="chart-section">
+      <canvas #progressChart></canvas>
+    </div>
   </div>
 
-  <!-- Уровни достижений по месяцам (таблица) -->
-  <div class="monthly-section">
-    <h3>Уровни достижений по месяцам</h3>
-    <table class="monthly-table">
-      <tr>
-        <th></th>
-        <th *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">{{ month }}</th>
-      </tr>
-      <tr>
-        <td>75%</td>
-        <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
-          <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[0]}">★</span>
-        </td>
-      </tr>
-      <tr>
-        <td>90%</td>
-        <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
-          <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[1]}">★</span>
-        </td>
-      </tr>
-      <tr>
-        <td>100%</td>
-        <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
-          <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[2]}">★</span>
-        </td>
-      </tr>
+  <div class="table-wrapper">
+    <table>
+      <!-- Уровни достижений по месяцам (таблица) -->
+      <div class="monthly-section">
+        <h3>Уровни достижений по месяцам</h3>
+        <table class="monthly-table">
+          <tr>
+            <th></th>
+            <th *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">{{ month }}</th>
+          </tr>
+          <tr>
+            <td>75%</td>
+            <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
+              <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[0]}">★</span>
+            </td>
+          </tr>
+          <tr>
+            <td>90%</td>
+            <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
+              <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[1]}">★</span>
+            </td>
+          </tr>
+          <tr>
+            <td>100%</td>
+            <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
+              <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[2]}">★</span>
+            </td>
+          </tr>
+        </table>
+      </div>
     </table>
   </div>
 
