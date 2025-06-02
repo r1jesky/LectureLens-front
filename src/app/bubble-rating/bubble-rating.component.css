@@ -455,3 +455,29 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+.button-toggle-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.button-toggle-group button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-toggle-group button.active {
+  background-color: #ff7f00;
+  border-color: #ff7f00;
+  color: white;
+}
+
+.button-toggle-group button:hover {
+  background-color: #f0f0f0;
+}
+

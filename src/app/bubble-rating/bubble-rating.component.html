@@ -30,9 +30,17 @@
 
         <div class="cloud">
           <label> Хотели бы вы рассказать о проведенном занятии чуть больше?</label>
-          <div>
-            <label><input type="radio" [name]="'s1_q01'" [(ngModel)]="responses.section1.q01" [value]="'yes'" (change)="onCheckboxChange('section1')"> Да</label>
-            <label><input type="radio" [name]="'s1_q01'" [(ngModel)]="responses.section1.q01" [value]="'no'" (change)="onCheckboxChange('section1')"> Нет</label>
+          <div class="button-toggle-group">
+            <button type="button"
+                    [class.active]="responses.section1.q01 === 'yes'"
+                    (click)="responses.section1.q01 = 'yes'; onCheckboxChange('section1')">
+              Да
+            </button>
+            <button type="button"
+                    [class.active]="responses.section1.q01 === 'no'"
+                    (click)="responses.section1.q01 = 'no'; onCheckboxChange('section1')">
+              Нет
+            </button>
           </div>
         </div>
         @if (responses.section1.q01 === 'yes') {
@@ -209,10 +217,18 @@
 
         <div class="cloud">
         <label> Хотели бы вы рассказать о прошедших занятиях чуть больше?</label>
-        <div>
-          <label><input type="radio" [name]="'s2_q01'" [(ngModel)]="responses.section2.q01" [value]="'yes'" (change)="onCheckboxChange('section2')"> Да</label>
-          <label><input type="radio" [name]="'s2_q01'" [(ngModel)]="responses.section2.q01" [value]="'no'" (change)="onCheckboxChange('section2')"> Нет</label>
-        </div>
+          <div class="button-toggle-group">
+            <button type="button"
+                    [class.active]="responses.section2.q01 === 'yes'"
+                    (click)="responses.section2.q01 = 'yes'; onCheckboxChange('section2')">
+              Да
+            </button>
+            <button type="button"
+                    [class.active]="responses.section2.q01 === 'no'"
+                    (click)="responses.section2.q01 = 'no'; onCheckboxChange('section2')">
+              Нет
+            </button>
+          </div>
         </div>
 
         @if (responses.section2.q01 === 'yes') {
