@@ -1,6 +1,27 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart, { ChartData, ChartOptions } from 'chart.js/auto';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+// Ответ бэкенда
+export interface ProgressStatsDTO {
+  scores: number[];
+}
+
+// ВЫНЕСИ этот сервис в отдельный файл progress.service.ts
+import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class ProgressService {
+  constructor(private http: HttpClient) {}
+
+  getProgress(userId: number, semester: number): Observable<ProgressStatsDTO> {
+    // Поменяй адрес на реальный для твоего бэкенда!
+    return this.http.get<ProgressStatsDTO>(`http://localhost:8080/api/students/{{userId}}/progress?
+    semester={{$random.integer(100)}}`);
+  }
+}
 
 // Расширяем тип HTMLCanvasElement, добавляя свойство chart
 interface ChartCanvasElement extends HTMLCanvasElement {
@@ -10,74 +31,45 @@ interface ChartCanvasElement extends HTMLCanvasElement {
 @Component({
   selector: 'app-achievements-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './achievements-page.component.html',
   styleUrls: ['./achievements-page.component.css'],
 })
 export class AchievementsPageComponent implements AfterViewInit {
   @ViewChild('progressChart') chartCanvas!: ElementRef<ChartCanvasElement>;
 
-  // Текущая вкладка
-  currentSemester: number = 1; // 1 или 2
+  currentSemester: number = 1;
+  maxLevel: number = 20;
+  userId = 1;
 
-  // Данные с бэкенда (0-100%)
-  maxLevel: number = 100;
+  semester1Months: string[] = ['Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь', 'Сессия'];
+  semester2Months: string[] = ['Февраль', 'Март', 'Апрель', 'Май', 'Сессия'];
+  semester1Progress: number[] = [];
+  semester2Progress: number[] = [];
 
-  // Месяцы
-  semester1Months: string[] = ['Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь','Сессия'];
-  semester2Months: string[] = ['Февраль', 'Март', 'Апрель', 'Май','Сессия'];
+  // остальные переменные без изменений...
 
-  // Прогресс по месяцам (реальные данные)
-  semester1Progress: number[] = [85, 20, 72, 75, 70]; // Сентябрь–Декабрь
-  semester2Progress: number[] = [30, 90, 75, 70, 60]; // Февраль–Май
-
-  // Экзамены и зачёты
-  semester1ExamsTotal: number = 8;
-  semester1ExamsPassed: number = 4;
-  semester2ExamsTotal: number = 9;
-  semester2ExamsPassed: number = 3;
-
-  // Уровни достижений для каждого месяца
-  monthlyLevels: { [month: string]: { level75: number; level90: number; level100: number; stars: boolean[] } } = {};
-
-  constructor() {
-    // Инициализация уровней достижений для каждого месяца
-    this.semester1Months.forEach((month, index) => {
-      const progress = this.semester1Progress[index];
-      this.monthlyLevels[month] = {
-        level75: this.maxLevel *0.85 * 0.75,
-        level90: this.maxLevel *0.85 * 0.9,
-        level100: this.maxLevel *0.85,
-        stars: [
-          progress >= this.maxLevel*0.85 * 0.75,
-          progress >= this.maxLevel*0.85 * 0.9,
-          progress >= this.maxLevel*0.85,
-        ],
-      };
-    });
-
-    this.semester2Months.forEach((month, index) => {
-      const progress = this.semester2Progress[index];
-      this.monthlyLevels[month] = {
-        level75: this.maxLevel *0.85 * 0.75,
-        level90: this.maxLevel *0.85 * 0.9,
-        level100: this.maxLevel*0.85,
-        stars: [
-          progress >= this.maxLevel*0.85 * 0.75,
-          progress >= this.maxLevel*0.85 * 0.9,
-          progress >= this.maxLevel*0.85,
-        ],
-      };
-    });
-  }
+  constructor(private progressService: ProgressService) {}
 
   ngAfterViewInit() {
-    this.createChart();
+    this.loadProgress(1);
+  }
+
+  loadProgress(semester: number) {
+    this.progressService.getProgress(this.userId, semester)
+      .subscribe((data: ProgressStatsDTO) => {
+        if (semester === 1) {
+          this.semester1Progress = data.scores;
+        } else {
+          this.semester2Progress = data.scores;
+        }
+        this.createChart();
+      });
   }
 
   switchSemester(semester: number) {
     this.currentSemester = semester;
-    this.createChart();
+    this.loadProgress(semester);
   }
 
   createChart() {
@@ -145,12 +137,10 @@ export class AchievementsPageComponent implements AfterViewInit {
       },
     };
 
-    // Уничтожаем предыдущий график, если он существует
     if (this.chartCanvas.nativeElement.chart) {
       this.chartCanvas.nativeElement.chart.destroy();
     }
 
-    // Создаём новый график и сохраняем его
     const chart = new Chart(ctx, {
       type: 'line',
       data: chartData,
