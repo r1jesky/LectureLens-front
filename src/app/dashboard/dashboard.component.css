@@ -1,67 +1,24 @@
 .dashboard {
   padding: 2rem;
-  background: linear-gradient(135deg, #e8f0ff, #d6e4f7);
-  border-radius: 16px;
-  max-width: 900px;
-  margin: auto;
   font-family: Arial, sans-serif;
-}
-
-.dashboard-title {
-  text-align: center;
-  color: #003366;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-}
-
-.metrics {
-  margin-bottom: 3rem;
-}
-
-.metric {
-  margin-bottom: 1.5rem;
-}
-
-.metric-label {
-  font-weight: bold;
-  color: #004080;
-  margin-bottom: 0.5rem;
-}
-
-.metric-bar {
-  height: 24px;
-  background-color: #d6e4f7;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-}
-
-.metric-fill {
-  height: 100%;
-  background: linear-gradient(to right, #3399ff, #007bff);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 10px;
-  color: white;
-  font-weight: bold;
-  font-size: 0.9rem;
-  border-radius: 12px 0 0 12px;
-  transition: width 0.5s ease;
+  max-width: 1100px;
+  margin: auto;
+  background: linear-gradient(135deg, #f0f4fa, #dfeaf5);
+  border-radius: 16px;
 }
 
 .cloud {
-  background: #f5f9ff;
+  margin-bottom: 2rem;
+  background: #f7faff;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 }
 
 .cloud-title {
   text-align: center;
   font-size: 1.4rem;
-  color: #002b55;
   margin-bottom: 1rem;
+  color: #003366;
 }
 
 .cloud-container {
@@ -80,3 +37,98 @@
 .cloud-item:hover {
   transform: scale(1.1);
 }
+
+.content-columns {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #003366;
+}
+
+.metrics {
+  flex: 1;
+  min-width: 250px;
+}
+
+.metric {
+  margin-bottom: 1rem;
+}
+
+.metric-label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #004080;
+}
+
+.metric-bar.short {
+  height: 16px;
+  background-color: #d6e4f7;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.metric-fill {
+  height: 100%;
+  background: linear-gradient(to right, #3399ff, #007bff);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 10px 0 0 10px;
+}
+
+.sentiment {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.legend {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.legend-box {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 6px;
+  border-radius: 4px;
+}
+
+.wide-cloud {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wide-cloud {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.card {
+  flex: 1;
+  min-width: 300px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 64, 128, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
