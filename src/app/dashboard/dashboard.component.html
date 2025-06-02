@@ -1,1 +1,26 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <h2 class="dashboard-title">Аналитика освоения курса</h2>
+
+  <div class="metrics">
+    <div class="metric" *ngFor="let metric of metrics">
+      <div class="metric-label">{{ metric.label }}</div>
+      <div class="metric-bar">
+        <div class="metric-fill" [style.width.%]="metric.value">
+          <span class="metric-value">{{ metric.value }}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cloud">
+    <h3 class="cloud-title">Что говорят студенты</h3>
+    <div class="cloud-container">
+      <span *ngFor="let phrase of cloudPhrases; let i = index"
+            class="cloud-item"
+            [style.fontSize.px]="getFontSize(phrase.count)"
+            [style.color]="getPhraseColor(i)">
+        {{ phrase.text }}
+      </span>
+    </div>
+  </div>
+</div>

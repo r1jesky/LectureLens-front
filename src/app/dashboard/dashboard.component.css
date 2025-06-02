@@ -1,0 +1,82 @@
+.dashboard {
+  padding: 2rem;
+  background: linear-gradient(135deg, #e8f0ff, #d6e4f7);
+  border-radius: 16px;
+  max-width: 900px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-title {
+  text-align: center;
+  color: #003366;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.metrics {
+  margin-bottom: 3rem;
+}
+
+.metric {
+  margin-bottom: 1.5rem;
+}
+
+.metric-label {
+  font-weight: bold;
+  color: #004080;
+  margin-bottom: 0.5rem;
+}
+
+.metric-bar {
+  height: 24px;
+  background-color: #d6e4f7;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.metric-fill {
+  height: 100%;
+  background: linear-gradient(to right, #3399ff, #007bff);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 12px 0 0 12px;
+  transition: width 0.5s ease;
+}
+
+.cloud {
+  background: #f5f9ff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.cloud-title {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #002b55;
+  margin-bottom: 1rem;
+}
+
+.cloud-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cloud-item {
+  font-weight: bold;
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.cloud-item:hover {
+  transform: scale(1.1);
+}
