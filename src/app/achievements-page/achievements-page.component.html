@@ -25,7 +25,7 @@
             <th *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">{{ month }}</th>
           </tr>
           <tr>
-            <td>75%</td>
+            <td>80%</td>
             <td *ngFor="let month of currentSemester === 1 ? semester1Months : semester2Months">
               <span class="star" [ngClass]="{'achieved': monthlyLevels[month].stars[0]}">★</span>
             </td>
