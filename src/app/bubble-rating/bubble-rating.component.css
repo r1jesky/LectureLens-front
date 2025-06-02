@@ -63,6 +63,8 @@ label {
 }
 
 .bubble-row {
+  max-width: 100%;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,11 +89,10 @@ label {
 }
 
 .bubble-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  justify-content: space-between;
 }
 
 .bubble-group label {
@@ -138,34 +139,46 @@ input[type="radio"]:checked + .bubble.right {
   border: 3px solid #ff7f00;
 }
 
-.bubble-group.scale-5 label:nth-child(1) .bubble,
-.bubble-group.scale-5 label:nth-child(5) .bubble {
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-}
-.bubble-group.scale-5 label:nth-child(2) .bubble,
-.bubble-group.scale-5 label:nth-child(4) .bubble {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-.bubble-group.scale-5 label:nth-child(3) .bubble {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+.bubble-group.scale-5 label:nth-child(1) .bubble {
+  transform: scale(1.1);
+  border-color: #007bff;
 }
 
-.bubble-group.scale-3 label:nth-child(1) .bubble,
-.bubble-group.scale-3 label:nth-child(3) .bubble {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
+.bubble-group.scale-5 label:nth-child(2) .bubble {
+  transform: scale(1);
+  border-color: #007bff;
 }
+
+.bubble-group.scale-5 label:nth-child(3) .bubble {
+  transform: scale(0.9);
+  border-color: #999;
+}
+
+.bubble-group.scale-5 label:nth-child(4) .bubble {
+  transform: scale(1);
+  border-color: #ff7f00;
+}
+
+.bubble-group.scale-5 label:nth-child(5) .bubble {
+  transform: scale(1.1);
+  border-color: #ff7f00;
+}
+
+.bubble-group.scale-3 label:nth-child(1) .bubble {
+  transform: scale(1.1);
+  border-color: #007bff;
+}
+
+
 .bubble-group.scale-3 label:nth-child(2) .bubble {
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
+  transform: scale(0.9);
+  border-color: #999;
+}
+
+
+.bubble-group.scale-3 label:nth-child(3) .bubble {
+  transform: scale(1.1);
+  border-color: #ff7f00;
 }
 
 .bubble-group.scale-2 label:nth-child(1) .bubble,
@@ -328,13 +341,6 @@ label {
   color: #555;
   width: 80px;
   text-align: center;
-}
-
-.bubble-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
 }
 
 /* Пузырьки */
