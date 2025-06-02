@@ -142,4 +142,28 @@ table th, table td {
   box-sizing: border-box;
 }
 
+.bubble-group.scale-5 label:nth-child(1) .bubble {
+  transform: scale(0.9);
+  border-color: #007bff;
+}
+
+.bubble-group.scale-5 label:nth-child(2) .bubble {
+  transform: scale(1);
+  border-color: #007bff;
+}
+
+.bubble-group.scale-5 label:nth-child(3) .bubble {
+  transform: scale(1.1);
+  border-color: #999;
+}
+
+.bubble-group.scale-5 label:nth-child(4) .bubble {
+  transform: scale(1);
+  border-color: #ff7f00;
+}
+
+.bubble-group.scale-5 label:nth-child(5) .bubble {
+  transform: scale(0.9);
+  border-color: #ff7f00;
+}
 

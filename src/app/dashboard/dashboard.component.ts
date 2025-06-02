@@ -12,8 +12,16 @@ import { ChartConfiguration } from 'chart.js';
 })
 export class DashboardComponent {
   metrics = [
+    { label: 'Общая оценка', value: 63 },
     { label: 'Научность', value: 78 },
-    { label: 'Сложность', value: 62 },
+    { label: 'Систематичность', value: 62 },
+    { label: 'Сознательность и активность', value: 50 },
+    { label: 'Наглядность', value: 20 },
+    { label: 'Прочность', value: 80 },
+    { label: 'Природосообразность', value: 90 },
+    { label: 'Единство знаний', value: 62 },
+    { label: 'Гуманизация', value: 62 },
+    { label: 'Коллективная характеристика', value: 45 },
     { label: 'Подача материала', value: 89 }
   ];
 
