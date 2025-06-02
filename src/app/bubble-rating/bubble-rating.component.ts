@@ -24,7 +24,12 @@ export class BubbleRatingComponent {
       q4: null as number | null,
       q4c: '',
       q5: null as number | null,
-      q5c: ''
+      q5c: '',
+      q6: null as number | null,
+      q6c: '',
+      q7: null as number | null,
+      q7c: '',
+      q8c: ''
     },
     section2: {
       q0: null as number | null,
@@ -37,7 +42,16 @@ export class BubbleRatingComponent {
       q4: null as number | null,
       q4c: '',
       q5: null as number | null,
-      q5c: ''
+      q5c: '',
+      q6: null as number | null,
+      q6c: '',
+      q7: null as number | null,
+      q7c: '',
+      q8: null as number | null,
+      q8c: '',
+      q9: null as number | null,
+      q9c: '',
+      q10c: ''
     },
     section3: {
       q0: null as number | null,
@@ -75,6 +89,11 @@ export class BubbleRatingComponent {
       this.responses.section1.q4c = '';
       this.responses.section1.q5 = null;
       this.responses.section1.q5c = '';
+      this.responses.section1.q6 = null;
+      this.responses.section1.q6c = '';
+      this.responses.section1.q7 = null;
+      this.responses.section1.q7c = '';
+      this.responses.section1.q8c = '';
     } else if (section === 'section2' && !this.responses.section2.q01) {
       this.responses.section2.q1 = null;
       this.responses.section2.q1c = '';
@@ -85,6 +104,15 @@ export class BubbleRatingComponent {
       this.responses.section2.q4c = '';
       this.responses.section2.q5 = null;
       this.responses.section2.q5c = '';
+      this.responses.section2.q6 = null;
+      this.responses.section2.q6c = '';
+      this.responses.section2.q7 = null;
+      this.responses.section2.q7c = '';
+      this.responses.section2.q8 = null;
+      this.responses.section2.q8c = '';
+      this.responses.section2.q9 = null;
+      this.responses.section2.q9c = '';
+      this.responses.section2.q10c = '';
     }
   }
 }
