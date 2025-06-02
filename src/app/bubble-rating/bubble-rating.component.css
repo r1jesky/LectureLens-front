@@ -56,7 +56,7 @@ h2 {
 
 label {
   display: block;
-  margin-bottom: 0.75rem;
+  margin-top: 0.2rem;
   font-weight: bold;
   font-size: 1.1rem;
   color: #444;
@@ -136,38 +136,6 @@ input[type="radio"]:checked + .bubble.left {
 input[type="radio"]:checked + .bubble.right {
   background: linear-gradient(145deg, #ff7f00, #ffab40);
   border: 3px solid #ff7f00;
-}
-
-/* Динамические размеры для любого количества кругов */
-.bubble-group.scale-10 label:nth-child(1) .bubble,
-.bubble-group.scale-10 label:nth-child(10) .bubble {
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-}
-.bubble-group.scale-10 label:nth-child(2) .bubble,
-.bubble-group.scale-10 label:nth-child(9) .bubble {
-  width: 52px;
-  height: 52px;
-  line-height: 52px;
-}
-.bubble-group.scale-10 label:nth-child(3) .bubble,
-.bubble-group.scale-10 label:nth-child(8) .bubble {
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
-}
-.bubble-group.scale-10 label:nth-child(4) .bubble,
-.bubble-group.scale-10 label:nth-child(7) .bubble {
-  width: 36px;
-  height: 36px;
-  line-height: 36px;
-}
-.bubble-group.scale-10 label:nth-child(5) .bubble,
-.bubble-group.scale-10 label:nth-child(6) .bubble {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
 }
 
 .bubble-group.scale-5 label:nth-child(1) .bubble,
@@ -299,12 +267,6 @@ nav {
 
 /* Сделаем пузырьки адаптивными */
 @media screen and (max-width: 600px) {
-  .bubble-group.scale-10 label .bubble {
-    width: 30px !important;
-    height: 30px !important;
-    line-height: 30px !important;
-  }
-
   .bubble-group.scale-5 label .bubble,
   .bubble-group.scale-3 label .bubble,
   .bubble-group.scale-2 label .bubble {
@@ -448,7 +410,7 @@ textarea {
 }
 
 .cloud {
-  margin-bottom: 2rem;
+  margin-top: 1rem;
   background: #d6e4f7;
   padding: 5rem;
   border-radius: 12px;
@@ -479,5 +441,90 @@ textarea {
 
 .button-toggle-group button:hover {
   background-color: #f0f0f0;
+}
+
+.bubble-container {
+  padding: 1rem;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.question-block, .cloud {
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.bubble-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.bubble-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding: 0.25rem 0;
+}
+
+.bubble-label-left,
+.bubble-label-right {
+  min-width: 60px;
+  text-align: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+textarea, select {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 2rem auto;
+  display: block;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .bubble-group {
+    gap: 0.25rem;
+  }
+
+  .bubble {
+    width: 32px;
+    height: 32px;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+  }
 }
 
